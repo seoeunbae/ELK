@@ -58,6 +58,13 @@ services:
       cluster.initial_master_nodes: esm01
       discovery.seed_hosts: esm01, esd01, esd02
       xpack.security.enabled: "false"
+  metricbeat:
+    image: docker.elastic.co/beats/metricbeat:7.16.2
+    container_name: metricbeat
+    environment:
+      ELASTICSEARCH_HOSTS: http://esm01:9200
+    volumes:
+      - ./config/metricbeat.yml:/usr/share/metricbeat/metricbeat.yml
 
 volumes:
   data01:
