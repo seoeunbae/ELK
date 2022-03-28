@@ -13,5 +13,10 @@ output.elasticsearch:
 metricbeat.modules:
   - module: elasticsearch
     xpack.enabled: true
+#    xpack.monitoring.enabled: true
+#    xpack.monitoring.collection.enabled: true
+    xpack.monitoring.exporters.my_local:
+      type: local
+      use_ingest: false
     period: 10s
     hosts: [ 'http://esm01:9200', 'http://esd01:9200', 'http://esd02:9200' ]
