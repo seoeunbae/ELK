@@ -1,0 +1,3 @@
+http.host: "0.0.0.0"
+config.reload.automatic: true #pipeline, 설정을 바꾸면 자동리로드한다./ 실무에서는 꺼야한다.
+xpack.monitoring.elasticsearch.hosts: [ "http://esm01:9200" ]

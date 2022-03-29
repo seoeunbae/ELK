@@ -38,7 +38,7 @@ services:
       ES_SETTING_BOOTSTRAP_MEMORY__LOCK: "true"
       ES_JAVA_OPTS: "-Xmx512m -Xms512m -Xlog:disable"
       node.name: esd01
-      node.roles: ingest, data
+      node.roles: ingest, data #데이터노드가 두개이상일때 하나이상의 인제스트노드가 꼭 필요하다. 인제스트노드는 문서 전처리 작업을 수행, 인덱스 생성 전 문서의 형식을 변경할 수 있습니다
       cluster.name: es-cluster
       cluster.initial_master_nodes: esm01
       discovery.seed_hosts: esm01, esd01, esd02
