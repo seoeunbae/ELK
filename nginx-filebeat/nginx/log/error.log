@@ -483,3 +483,6 @@
 2022/03/29 08:31:02 [notice] 1#1: start worker process 34
 2022/03/29 08:53:20 [error] 31#31: *1 open() "/usr/share/nginx/html/version" failed (2: No such file or directory), client: 172.18.0.1, server: localhost, request: "GET /version?timeout=32s HTTP/1.1", host: "localhost:8080"
 2022/03/29 08:53:41 [error] 32#32: *2 open() "/usr/share/nginx/html/version" failed (2: No such file or directory), client: 172.18.0.1, server: localhost, request: "GET /version?timeout=32s HTTP/1.1", host: "localhost:8080"
+2022/03/31 04:14:53 [error] 34#34: *4 open() "/usr/share/nginx/html/swagger-ui.html" failed (2: No such file or directory), client: 172.18.0.1, server: localhost, request: "GET /swagger-ui.html HTTP/1.1", host: "localhost:8080"
+2022/03/31 04:14:53 [error] 34#34: *4 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 172.18.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/swagger-ui.html"
+2022/03/31 04:14:55 [error] 34#34: *4 open() "/usr/share/nginx/html/swagger-ui.html" failed (2: No such file or directory), client: 172.18.0.1, server: localhost, request: "GET /swagger-ui.html HTTP/1.1", host: "localhost:8080"
