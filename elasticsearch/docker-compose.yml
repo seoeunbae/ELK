@@ -58,7 +58,7 @@ services:
     environment:
       ES_SETTING_BOOTSTRAP_MEMORY__LOCK: "true"
       ES_JAVA_OPTS: "-Xmx512m -Xms512m -Xlog:disable"
-      node.name: esd03
+      node.name: esd02
       node.roles: data
       cluster.name: es-cluster
       cluster.initial_master_nodes: esm01

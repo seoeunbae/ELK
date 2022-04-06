@@ -5,10 +5,12 @@ metricbeat.config.modules:
   path: ${path.config}/modules.d/*.yml
 
 setup.dashboards.enabled: true
-setup.kibana.host: kibana:5601
+setup.kibana.host: localhost:5601
 
 output.elasticsearch:
   hosts: ['esm01:9200']
+  username: "metricbeat_writer"
+  password: "YOUR_PASSWORD"
 
 metricbeat.modules:
   - module: elasticsearch
@@ -21,3 +23,8 @@ metricbeat.modules:
     period: 10s
     hosts: [ 'http://esm01:9200', 'http://esd01:9200', 'http://esd02:9200' ]
 
+monitoring:
+  enabled: true
+  elasticsearch:
+    username: "metricbeat_writer"
+    password: "YOUR_PASSWORD"
