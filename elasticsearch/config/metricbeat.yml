@@ -22,6 +22,10 @@ metricbeat.modules:
       use_ingest: false
     period: 10s
     hosts: [ 'http://esm01:9200', 'http://esd01:9200', 'http://esd02:9200' ]
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
 
 monitoring:
   enabled: true

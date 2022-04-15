@@ -2,8 +2,8 @@ version: '3.8'
 services:
   esm01:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.16.2
-#    mem_limit: 8000M
-#    mem_reservation: 5000M
+    # mem_limit: 8000M
+# mem_reservation: 5000M
     container_name: esm01
     ports:
       - "9200:9200"
@@ -23,7 +23,11 @@ services:
       cluster.initial_master_nodes: esm01
       discovery.seed_hosts: esm01, esd01, esd02
       xpack.security.enabled: "false"
-      xpack.monitoring.collection.enabled: false
+      xpack.monitoring.collection.enabled: "false"
+#    deploy:
+#      resources:
+#        limits:
+#          cpus: '0.5'
 
   esd01:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.16.2
@@ -43,7 +47,7 @@ services:
       cluster.initial_master_nodes: esm01
       discovery.seed_hosts: esm01, esd01, esd02
       xpack.security.enabled: "false"
-      xpack.monitoring.collection.enabled: false
+      xpack.monitoring.collection.enabled: "false"
 
 
   esd02:
@@ -64,7 +68,7 @@ services:
       cluster.initial_master_nodes: esm01
       discovery.seed_hosts: esm01, esd01, esd02
       xpack.security.enabled: "false"
-      xpack.monitoring.collection.enabled: false
+      xpack.monitoring.collection.enabled: "false"
 
 
 
@@ -77,6 +81,10 @@ services:
       ELASTICSEARCH_HOSTS: http://esm01:9200
     volumes:
       - ./config/metricbeat.yml:/usr/share/metricbeat/metricbeat.yml
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
 
 volumes:
   data01:
