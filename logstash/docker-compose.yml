@@ -6,6 +6,7 @@ services:
     volumes:
       - ./config/logstash.yml:/usr/share/logstash/config/logstash.yml
       - ./pipelines/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - /Users/baeseoeun/Downloads/postgresql-42.3.4.jar:/usr/share/logstash/postgresql-42.3.4.jar
     ports:
       - "5044:5044"
       - "5000:5000/tcp"
@@ -13,6 +14,7 @@ services:
       - "9600:9600"
     environment:
       LS_JAVA_OPTS: "-Xmx512m -Xms512m"
+      ELASTIC_PASSWORD: "changeme"
 
 networks:
   default:

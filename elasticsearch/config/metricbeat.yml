@@ -5,12 +5,12 @@ metricbeat.config.modules:
   path: ${path.config}/modules.d/*.yml
 
 setup.dashboards.enabled: true
-setup.kibana.host: localhost:5601
+setup.kibana.host: https://search-plav-es-4omwj46r5h64gpx57a4ior3gtu.ap-northeast-2.es.amazonaws.com/_plugin/kibana
 
 output.elasticsearch:
-  hosts: ['esm01:9200']
-  username: "metricbeat_writer"
-  password: "YOUR_PASSWORD"
+  hosts: ['https://search-plav-es-4omwj46r5h64gpx57a4ior3gtu.ap-northeast-2.es.amazonaws.com']
+#  username: "metricbeat_writer"
+#  password: "YOUR_PASSWORD"
 
 metricbeat.modules:
   - module: elasticsearch
@@ -21,7 +21,7 @@ metricbeat.modules:
       type: local
       use_ingest: false
     period: 10s
-    hosts: [ 'http://esm01:9200', 'http://esd01:9200', 'http://esd02:9200' ]
+    hosts: [ 'https://search-plav-es-4omwj46r5h64gpx57a4ior3gtu.ap-northeast-2.es.amazonaws.com' ]
     deploy:
       resources:
         limits:
@@ -29,6 +29,6 @@ metricbeat.modules:
 
 monitoring:
   enabled: true
-  elasticsearch:
-    username: "metricbeat_writer"
-    password: "YOUR_PASSWORD"
+#  elasticsearch:
+#    username: "metricbeat_writer"
+#    password: "YOUR_PASSWORD"

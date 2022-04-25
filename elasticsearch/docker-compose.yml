@@ -3,12 +3,13 @@ services:
   esm01:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.16.2
     # mem_limit: 8000M
-# mem_reservation: 5000M
+    # mem_reservation: 5000M
     container_name: esm01
     ports:
       - "9200:9200"
     volumes:
       - data01:/usr/share/elasticsearch/data
+      - ./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ulimits:
       memlock:
         soft: -1
@@ -16,6 +17,7 @@ services:
     environment:
       ES_SETTING_BOOTSTRAP_MEMORY__LOCK: "true"
       ES_JAVA_OPTS: "-Xmx512m -Xms512m -Xlog:disable"
+      ELASTIC_PASSWORD: "changeme"
       node.name: esm01
       node.roles: master
       network.host: 0.0.0.0
@@ -34,6 +36,7 @@ services:
     container_name: esd01
     volumes:
       - data02:/usr/share/elasticsearch/data
+      - ./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ulimits:
       memlock:
         soft: -1
@@ -41,6 +44,7 @@ services:
     environment:
       ES_SETTING_BOOTSTRAP_MEMORY__LOCK: "true"
       ES_JAVA_OPTS: "-Xmx512m -Xms512m -Xlog:disable"
+      ELASTIC_PASSWORD: "changeme"
       node.name: esd01
       node.roles: ingest, data #데이터노드가 두개이상일때 하나이상의 인제스트노드가 꼭 필요하다. 인제스트노드는 문서 전처리 작업을 수행, 인덱스 생성 전 문서의 형식을 변경할 수 있습니다
       cluster.name: es-cluster
@@ -55,6 +59,7 @@ services:
     container_name: esd02
     volumes:
       - data03:/usr/share/elasticsearch/data
+      - ./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ulimits:
       memlock:
         soft: -1
@@ -62,6 +67,7 @@ services:
     environment:
       ES_SETTING_BOOTSTRAP_MEMORY__LOCK: "true"
       ES_JAVA_OPTS: "-Xmx512m -Xms512m -Xlog:disable"
+      ELASTIC_PASSWORD: "changeme"
       node.name: esd02
       node.roles: data
       cluster.name: es-cluster
@@ -78,7 +84,7 @@ services:
     image: docker.elastic.co/beats/metricbeat:7.16.2
     container_name: metricbeat
     environment:
-      ELASTICSEARCH_HOSTS: http://esm01:9200
+      ELASTICSEARCH_HOSTS: http://13.125.131.5/search
     volumes:
       - ./config/metricbeat.yml:/usr/share/metricbeat/metricbeat.yml
     deploy:
