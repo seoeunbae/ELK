@@ -1,4 +1,5 @@
 http.host: "0.0.0.0"
 config.reload.automatic: true #pipeline, 설정을 바꾸면 자동리로드한다./ 실무에서는 꺼야한다.
-#xpack.monitoring.elasticsearch.hosts: [ "https://vpc-plav-admin-es-asypnth24f3exreiitv2uuzdwq.ap-northeast-2.es.amazonaws.com/_plugin/kibana/" ]
+xpack.monitoring.elasticsearch.hosts: [ "https://search-plav-es-4omwj46r5h64gpx57a4ior3gtu.ap-northeast-2.es.amazonaws.com" ]
+xpack.monitoring.enabled: true
 pipeline.ecs_compatibility: disabled
